@@ -12,6 +12,7 @@
     "globstar": "^1.0.0",
     "html-validator-cli": "^4.0.4",
     "node-sass": "^4.9.2",
+    "npm-install-all": "^1.1.21",
     "nu-html-checker": "^0.1.0",
     "rimraf": "^2.6.2"
   },
@@ -27,9 +28,10 @@
     "build:autoprefixer": "autoprefixer-cli css/style.css",
     "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
     "build:rimraf": "rimraf -r css",
-    "watch": "npm run watch:browsersync",
-    "watch:browsersync": "node_modules/.bin/browser-sync start --server",
-    "watch:sassprefixer": "sass sass/style.scss : sass/style.css && autoprefixer-cli style.css"
+    "watch": "npm-run-all watch:*",
+    "watch:sassprefixer": "node-sass --output-style expanded --source-map true -o css sass --watch && __ -d 100 css/style.css --autoprefixer-cli -o css/style.css",
+    "watch:browsersync": "node_modules/.bin/browser-sync start --server"
+
   },
   "repository": {
     "type": "git",
