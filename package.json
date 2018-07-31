@@ -29,7 +29,7 @@
     "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
     "build:rimraf": "rimraf -r css",
     "watch": "npm-run-all watch:*",
-    "watch:sassprefixer": "node-sass --output-style expanded --source-map true -o css sass --watch && onchange -d 100 ./sass/*.scss --build:sass && --build:autoprefixer",
+    "watch:sassprefixer": "onchange -d 100 ./sass/*.scss -- npm-run-all -s build:sass build:autoprefixer",
     "watch:browsersync": "node_modules/.bin/browser-sync start --server"
   },
   "repository": {
